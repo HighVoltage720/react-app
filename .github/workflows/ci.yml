@@ -54,13 +54,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to Staging
-        if: github.event_name == 'push' && github.ref == 'refs/head/develop'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
         run: npx surge --project ./build --domain https://dazzling-fruit.surge.sh/
       - name: Deploy to Production
-        if: github.event_name == 'push' && github.ref == 'refs/head/master'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx surge --project ./build --domain https://difficult-station.surge.sh
       - name: Upload Coverage Reports
-        if: github.event_name == 'push' && github.ref == 'refs/head/master'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx codecov
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
