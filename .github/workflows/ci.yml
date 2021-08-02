@@ -24,4 +24,7 @@ jobs:
         run: npm run build
       - name: Deploy to Staging
         if: github.event_name == 'push'
-        run: npx surge
+        run: npx surge --project ./build --domain https://dazzling-fruit.surge.sh/
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
