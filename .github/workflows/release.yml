@@ -1,0 +1,18 @@
+name: Notify on Release
+on:
+  push:
+  release:
+    types: [published]
+jobs:
+  slack-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Microsoft Teams Notification
+        uses: skitionek/notify-microsoft-teams@v1
+        if: always()
+        with:
+          webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
+          needs: ${{ toJson(needs) }}
+          job: ${{ toJson(job) }}
+          steps: ${{ toJson(steps) }}
+          dry_run: True
