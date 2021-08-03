@@ -1,7 +1,7 @@
-name: Notify on Release
+name: Notify on Issue
 on:
-  release:
-    types: [published]
+  issues:
+    types: [opened]
 jobs:
   slack-message:
     runs-on: ubuntu-latest
@@ -11,4 +11,4 @@ jobs:
         uses: dhollerbach/github-action-send-message-to-ms-teams@1.0.10
         with:
           webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
-          message: 'New Release ${{github.event.release.tag_name }} is out, ${{ github.event.release.html_url }}'
+          message: 'New Issue ${{github.event.issue.title }} is out, ${{ github.event.issue.html_url }}'
