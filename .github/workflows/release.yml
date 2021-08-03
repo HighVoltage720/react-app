@@ -15,4 +15,4 @@ jobs:
           ms-teams-webhook-uri: ${{ secrets.MSTEAMS_WEBHOOK }}
           notification-summary: Your custom notification message 
           notification-color: 17a2b8
-          timezone: America/New York
+          timezone: America/Denver
