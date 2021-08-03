@@ -1,6 +1,5 @@
 name: Notify on Release
 on:
-  push:
   release:
     types: [published]
 jobs:
@@ -12,4 +11,4 @@ jobs:
         uses: dhollerbach/github-action-send-message-to-ms-teams@1.0.10
         with:
           webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
-          message: 'W00t it werked!'
+          message: 'New Release ${{github.event.release.tag_name }} is out, <${{ github.event.release.html_url }}|check it out now.>'
