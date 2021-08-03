@@ -8,11 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Notify dedicated teams channel
-        uses: jdcargile/ms-teams-notification@master
+      - name: Send message to ms teams
+        uses: dhollerbach/github-action-send-message-to-ms-teams@1.0.10
         with:
-          github-token: ${{ github.token }} # this will use the runner's token.
-          ms-teams-webhook-uri: ${{ secrets.MSTEAMS_WEBHOOK }}
-          notification-summary: Your custom notification message 
-          notification-color: 17a2b8
-          timezone: America/Denver
+          webhook: ${{ secrets.MSTEAMS_WEBHOOK }}
+          message: 'W00t it werked!'
