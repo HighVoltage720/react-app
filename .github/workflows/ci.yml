@@ -69,7 +69,7 @@ jobs:
         if: failure() && github.event_name == 'pull_request'
         run: |
           curl --request POST \
-          --url https://api.github.com/repos/${{ gibhub.repository }}/issues \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
           --header 'authorization: Bearer ${{secrets.GITHUB_TOKEN }}' \
           --data '{
             "title":"Automated issue for commit: ${{github.sha}}",
